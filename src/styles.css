@@ -3686,3 +3686,80 @@ button:disabled {
     font-size: 12px;
   }
 }
+
+/* Hero actions: larger buttons and clear supporting benefits. */
+.hero-simple .hero-cta-block {
+  width: fit-content;
+  max-width: 100%;
+  margin: 32px auto 0;
+}
+.hero-simple .hero-cta-block .hero-actions {
+  gap: 14px;
+  margin-top: 0;
+}
+.hero-simple .hero-cta-block .btn {
+  min-width: 238px;
+  min-height: 60px;
+  padding: 16px 32px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+.hero-simple .hero-cta-block .btn-primary {
+  background: var(--brand);
+  box-shadow: 0 8px 24px rgba(47, 126, 120, 0.12);
+}
+.hero-simple .hero-cta-block .btn-primary:hover {
+  background: #398e86;
+}
+.hero-simple .hero-cta-block .btn-secondary {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: transparent;
+}
+.hero-simple .hero-cta-block .btn-secondary:hover {
+  background: rgba(92, 196, 191, 0.09);
+}
+.hero-simple .hero-cta-block .hero-assurance {
+  justify-content: flex-start;
+  gap: 10px 22px;
+  margin-top: 18px;
+  font-size: 13.5px;
+  line-height: 1.6;
+  text-align: left;
+  color: var(--secondary);
+}
+.hero-simple .hero-cta-block .hero-assurance > span {
+  gap: 7px;
+}
+.hero-simple .hero-cta-block .hero-assurance svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  color: #28c065;
+  stroke-width: 2.3;
+}
+.hero-simple .hero-cta-block .btn > svg {
+  width: 20px;
+  height: 20px;
+  stroke-width: 2;
+}
+@media (max-width: 620px) {
+  .hero-simple .hero-cta-block {
+    width: 100%;
+    margin-top: 26px;
+  }
+  .hero-simple .hero-cta-block .hero-actions {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+  .hero-simple .hero-cta-block .btn {
+    min-width: 0;
+    width: 100%;
+    min-height: 56px;
+    padding: 15px 24px;
+    font-size: 15px;
+  }
+}

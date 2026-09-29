@@ -45,21 +45,23 @@ export function Home({ open }: Open) {
               команда занималась клиентами,
               <br className="desktop-only" /> а вы — развитием бизнеса.
             </p>
-            <div className="hero-actions">
-              <Button onClick={() => open()}>Обсудить задачу</Button>
-              <Button to="/widget_amocrm" secondary icon="grid">
-                Выбрать виджет
-              </Button>
-            </div>
-            <div className="hero-assurance">
-              <span>
-                <Icon name="check" size={16} />
-                Погружаемся в ваш бизнес
-              </span>
-              <span>
-                <Icon name="check" size={16} />
-                Остаёмся на связи
-              </span>
+            <div className="hero-cta-block">
+              <div className="hero-actions">
+                <Button onClick={() => open()}>Обсудить задачу</Button>
+                <Button to="/widget_amocrm" secondary icon="">
+                  Выбрать виджет
+                </Button>
+              </div>
+              <div className="hero-assurance">
+                <span>
+                  <Icon name="check" size={16} />
+                  Погружаемся в ваш бизнес
+                </span>
+                <span>
+                  <Icon name="check" size={16} />
+                  Остаёмся на связи
+                </span>
+              </div>
             </div>
           </div>
         </div>
