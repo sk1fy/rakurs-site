@@ -10,6 +10,7 @@ import {
 } from "react-router-dom";
 import { Button, ContactBanner, ContactModal, Icon, Logo } from "./components";
 import { contact, instructions, widgets } from "./content";
+import { updatePageHead } from "./page-head";
 import {
   Article,
   Bonuses,
@@ -27,29 +28,7 @@ function PageEffects() {
   const { pathname } = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
-    const titles: Record<string, string> = {
-      "/": "amoCRM с вашего ракурса",
-      "/widget_amocrm": "Виджеты для amoCRM",
-      "/vnedrenie": "Внедрение amoCRM",
-      "/bonus": "Лицензии, бонусы и кэшбэк",
-      "/partner": "Партнёрская программа",
-      "/blog": "Блог и база знаний",
-      "/policy": "Политика конфиденциальности",
-      "/oferta": "Договор-оферта",
-      "/support": "Поддержка",
-      "/faq": "Ответы на вопросы",
-    };
-    const w = widgets.find((w) => "/" + w.slug === pathname);
-    const article = instructions.find((a) => "/" + a.slug === pathname);
-    document.title =
-      (titles[pathname] || w?.name || article?.title || "Страница не найдена") +
-      " · Ракурс";
-    const description = document.querySelector('meta[name="description"]');
-    description?.setAttribute(
-      "content",
-      w?.short ||
-        "Внедрение amoCRM, виджеты и автоматизация продаж. Ракурс — официальный партнёр amoCRM с 2016 года.",
-    );
+    updatePageHead(pathname);
   }, [pathname]);
   return null;
 }
@@ -349,7 +328,10 @@ export default function App() {
           <Route path="/vnedrenie" element={<Implementation open={open} />} />
           <Route path="/bonus" element={<Bonuses open={open} />} />
           <Route path="/cashback" element={<Navigate to="/bonus" replace />} />
-          <Route path="/partner_bonus" element={<Bonuses open={open} />} />
+          <Route
+            path="/partner_bonus"
+            element={<Navigate to="/bonus" replace />}
+          />
           <Route path="/partner" element={<Partners open={open} />} />
           <Route path="/blog" element={<Knowledge />} />
           <Route path="/policy" element={<LegalPage kind="policy" />} />
