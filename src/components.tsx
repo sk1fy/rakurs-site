@@ -370,7 +370,8 @@ function TopicSelect({
   useEffect(() => {
     if (!expanded) return;
     const dismiss = (e: PointerEvent) => {
-      if (!root.current?.contains(e.target as Node)) setExpanded(false);
+      if (!root.current || !e.composedPath().includes(root.current))
+        setExpanded(false);
     };
     document.addEventListener("pointerdown", dismiss);
     return () => document.removeEventListener("pointerdown", dismiss);

@@ -72,7 +72,8 @@ function WidgetsNavigation() {
   useEffect(() => {
     if (!expanded) return;
     const dismiss = (e: PointerEvent) => {
-      if (!root.current?.contains(e.target as Node)) setExpanded(false);
+      if (!root.current || !e.composedPath().includes(root.current))
+        setExpanded(false);
     };
     document.addEventListener("pointerdown", dismiss);
     return () => document.removeEventListener("pointerdown", dismiss);
@@ -155,7 +156,7 @@ function WidgetsNavigation() {
   );
 }
 
-function Header({ open }: { open: () => void }) {
+export function Header({ open }: { open: () => void }) {
   const [menu, setMenu] = useState(false);
   const location = useLocation();
   useEffect(() => setMenu(false), [location]);
@@ -301,10 +302,19 @@ function Footer() {
 function DetailRouter({ open }: { open: (s?: string) => void }) {
   const { slug } = useParams();
   const w = widgets.find((w) => w.slug === slug);
+  if (w?.slug === "kontrol-aktivnosti") return <ActivityLanding />;
   if (w) return <WidgetPage widget={w} open={open} />;
   if (instructions.some((a) => a.slug === slug))
     return <Article slug={slug!} />;
   return <NotFound />;
+}
+function ActivityLanding() {
+  useEffect(() => {
+    window.location.replace(
+      "/kontrol-aktivnosti/" + window.location.search + window.location.hash,
+    );
+  }, []);
+  return <a href="/kontrol-aktivnosti/">Контроль активности</a>;
 }
 export default function App() {
   const [modal, setModal] = useState(false);

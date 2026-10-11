@@ -31,6 +31,11 @@ function pageHtml(route) {
     `<meta name="twitter:card" content="summary_large_image" />`,
     `<script type="application/ld+json" data-page-seo>${server.serializeJsonLd(jsonLd)}</script>`,
   ];
+  if (route === "/kontrol-aktivnosti") {
+    return readFileSync(path.join(dist, "activity-control.html"), "utf8")
+      .replace(/<link rel="canonical"[^>]*>/, "")
+      .replace("</head>", () => tags.join("\n") + "\n</head>");
+  }
   return template
     .replace(/<title>.*?<\/title>/, () => `<title>${escapeHtml(title)}</title>`)
     .replace(
