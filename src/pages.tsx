@@ -55,6 +55,10 @@ export function Home({ open }: Open) {
               <div className="hero-assurance">
                 <span>
                   <Icon name="check" size={16} />
+                  Отвечаем быстро
+                </span>
+                <span>
+                  <Icon name="check" size={16} />
                   Погружаемся в ваш бизнес
                 </span>
                 <span>
@@ -64,12 +68,6 @@ export function Home({ open }: Open) {
               </div>
             </div>
           </div>
-        </div>
-        <div className="hero-bottom container">
-          <span>Меняя угол зрения, открываем новые возможности</span>
-          <a href="#solutions">
-            Узнать больше <Icon name="down" size={15} />
-          </a>
         </div>
       </section>
       <div className="trust-strip">
