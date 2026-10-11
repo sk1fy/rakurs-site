@@ -148,7 +148,7 @@ function WidgetsNavigation() {
             </Link>
           ))}
           <Link className="widget-nav-all" to="/widget_amocrm">
-            Все 20 виджетов <Icon name="arrow" size={16} />
+            Все {widgets.length} виджетов <Icon name="arrow" size={16} />
           </Link>
         </div>
       </div>
@@ -216,7 +216,7 @@ export function Header({ open }: { open: () => void }) {
     </header>
   );
 }
-function Footer() {
+export function Footer() {
   return (
     <footer className="site-footer">
       <div className="container">
@@ -302,19 +302,20 @@ function Footer() {
 function DetailRouter({ open }: { open: (s?: string) => void }) {
   const { slug } = useParams();
   const w = widgets.find((w) => w.slug === slug);
-  if (w?.slug === "kontrol-aktivnosti") return <ActivityLanding />;
+  if (w && ["kontrol-aktivnosti", "advanced-fields"].includes(w.slug))
+    return <ActivityLanding slug={w.slug} name={w.name} />;
   if (w) return <WidgetPage widget={w} open={open} />;
   if (instructions.some((a) => a.slug === slug))
     return <Article slug={slug!} />;
   return <NotFound />;
 }
-function ActivityLanding() {
+function ActivityLanding({ slug, name }: { slug: string; name: string }) {
   useEffect(() => {
     window.location.replace(
-      "/kontrol-aktivnosti/" + window.location.search + window.location.hash,
+      "/" + slug + "/" + window.location.search + window.location.hash,
     );
-  }, []);
-  return <a href="/kontrol-aktivnosti/">Контроль активности</a>;
+  }, [slug]);
+  return <a href={"/" + slug + "/"}>{name}</a>;
 }
 export default function App() {
   const [modal, setModal] = useState(false);

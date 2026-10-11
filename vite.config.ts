@@ -7,10 +7,17 @@ export default defineConfig(({ isSsrBuild }) => ({
       name: "activity-control-landing",
       configureServer(server) {
         server.middlewares.use((req, _res, next) => {
-          if (/^\/kontrol-aktivnosti\/?(?:\?|$)/.test(req.url || "")) {
+          if (
+            /^\/(kontrol-aktivnosti|advanced-fields)\/?(?:\?|$)/.test(
+              req.url || "",
+            )
+          ) {
             req.url = req.url!.replace(
-              /^\/kontrol-aktivnosti\/?/,
-              "/activity-control.html",
+              /^\/(kontrol-aktivnosti|advanced-fields)\/?/,
+              (_, slug) =>
+                slug === "advanced-fields"
+                  ? "/advanced-fields.html"
+                  : "/activity-control.html",
             );
           }
           next();
@@ -25,6 +32,7 @@ export default defineConfig(({ isSsrBuild }) => ({
           input: {
             main: "index.html",
             activity: "activity-control.html",
+            fields: "advanced-fields.html",
           },
           output: {
             manualChunks(id) {

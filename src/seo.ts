@@ -20,8 +20,7 @@ const staticMeta: Record<string, { title: string; description: string }> = {
   },
   "/widget_amocrm": {
     title: "Виджеты для amoCRM",
-    description:
-      "Каталог 20 виджетов для amoCRM: контроль активности, автоматизация продаж, интеграции с Telegram, WhatsApp и Google. Тестовый период 7 дней.",
+    description: `Каталог ${widgets.length} виджетов для amoCRM: контроль активности, автоматизация продаж, интеграции с Telegram, WhatsApp и Google. Тестовый период от 7 дней.`,
   },
   "/vnedrenie": {
     title: "Внедрение amoCRM",

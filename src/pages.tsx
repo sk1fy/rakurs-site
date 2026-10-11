@@ -74,7 +74,11 @@ export function Home({ open }: Open) {
         <div className="container trust-grid">
           {[
             { n: "с 2016", t: "развиваем бизнес с amoCRM", i: "shield" },
-            { n: "20", t: "виджетов под реальные задачи", i: "grid" },
+            {
+              n: String(widgets.length),
+              t: "виджетов под реальные задачи",
+              i: "grid",
+            },
             { n: "ТОП-20", t: "партнёров amoCRM", i: "trending" },
             { n: "24/7", t: "поддержка для наших клиентов", i: "message" },
           ].map((s) => (
@@ -116,7 +120,7 @@ export function Home({ open }: Open) {
               icon: "grid",
               title: "Создаём виджеты",
               text: "Добавляем то, чего не хватает вашей CRM. От простых помощников до автоматизации сложных процессов.",
-              tags: ["20 готовых решений", "Разработка"],
+              tags: [`${widgets.length} готовое решение`, "Разработка"],
               link: "/widget_amocrm",
               label: "Перейти в каталог",
             },
@@ -164,7 +168,7 @@ export function Home({ open }: Open) {
             text="Небольшие инструменты, которые меняют ежедневную работу. Выберите решение под вашу задачу."
             action={
               <Link className="text-link" to="/widget_amocrm">
-                Все 20 виджетов <Icon name="arrow" size={18} />
+                Все {widgets.length} виджетов <Icon name="arrow" size={18} />
               </Link>
             }
           />
@@ -429,7 +433,7 @@ export function Catalog({ open }: Open) {
             <span className="accent">Найдите свой инструмент.</span>
           </>
         }
-        text="20 решений для amoCRM: автоматизируйте рутину, управляйте командой и держите данные в порядке."
+        text={`${widgets.length} решение для amoCRM: автоматизируйте рутину, управляйте командой и держите данные в порядке.`}
       />
       <section className="container catalog-section">
         <div className="catalog-toolbar">

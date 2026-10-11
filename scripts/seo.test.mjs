@@ -12,7 +12,7 @@ import {
 } from "../dist-ssr/entry-server.js";
 
 test("all routes contain their own content, metadata and schema", () => {
-  assert.equal(prerenderRoutes.length, 36);
+  assert.equal(prerenderRoutes.length, 37);
   const titles = new Set();
   for (const route of prerenderRoutes) {
     const file = route === "/" ? "dist/index.html" : `dist${route}/index.html`;
@@ -67,7 +67,7 @@ test("all routes contain their own content, metadata and schema", () => {
 
 test("sitemap excludes noindex and unknown routes; old URLs redirect before fallback", () => {
   const sitemap = readFileSync("dist/sitemap.xml", "utf8");
-  assert.equal((sitemap.match(/<loc>/g) || []).length, 34);
+  assert.equal((sitemap.match(/<loc>/g) || []).length, 35);
   assert.ok(!sitemap.includes("/policy") && !sitemap.includes("/oferta"));
   const notFound = readFileSync("dist/404.html", "utf8");
   assert.match(notFound, /name="robots" content="noindex, follow"/);

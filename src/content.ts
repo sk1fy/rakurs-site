@@ -10,6 +10,13 @@ const additions: Record<
   string,
   { name: string; icon: string; short: string; color: string }
 > = {
+  "advanced-fields": {
+    name: "Динамические поля",
+    icon: "layout",
+    short:
+      "Группы, условное отображение, цвет и подсказки. Показывайте нужные поля и наводите порядок в карточках без программирования.",
+    color: "purple",
+  },
   "kontrol-aktivnosti": {
     name: "Контроль активности",
     icon: "activity",

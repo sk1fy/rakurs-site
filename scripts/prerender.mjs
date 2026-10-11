@@ -31,8 +31,12 @@ function pageHtml(route) {
     `<meta name="twitter:card" content="summary_large_image" />`,
     `<script type="application/ld+json" data-page-seo>${server.serializeJsonLd(jsonLd)}</script>`,
   ];
-  if (route === "/kontrol-aktivnosti") {
-    return readFileSync(path.join(dist, "activity-control.html"), "utf8")
+  const landingFiles = {
+    "/kontrol-aktivnosti": "activity-control.html",
+    "/advanced-fields": "advanced-fields.html",
+  };
+  if (landingFiles[route]) {
+    return readFileSync(path.join(dist, landingFiles[route]), "utf8")
       .replace(/<link rel="canonical"[^>]*>/, "")
       .replace("</head>", () => tags.join("\n") + "\n</head>");
   }
